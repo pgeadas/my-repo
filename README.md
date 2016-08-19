@@ -4,5 +4,5 @@ To run the program, make sure you have Python installed in your PC (used Python2
 #
 Open the program (main.py) with your favorite IDE and run it.
 #
-The program as a simple GUI developed with "wxPython".
+The program has a simple GUI developed with "wxPython".
 #
