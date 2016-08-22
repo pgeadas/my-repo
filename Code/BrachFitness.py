@@ -32,7 +32,6 @@ def calcBrachTime(indiv, debug = False):
 
 	#It has to have at least 2 points, otherwise it is not doable
 	if(len(indiv) < 4):
-                print "TEM MENOS DE 2 PONTOS"
 		return -1;
        # print "INDIV " + `indiv`
 	for i in range(2, len(indiv), 2):
@@ -42,7 +41,6 @@ def calcBrachTime(indiv, debug = False):
                         print "ERRO NO X"
 			return -1
                 elif(indiv[i] == x_i):
-                        print "ERRO NO Xxxxxxxxxxxxxxxxxxxxxxxxxx ================================================================== "
                         print x_i
                         print i
                         print indiv
