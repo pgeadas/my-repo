@@ -85,7 +85,7 @@ def sga(numb_genera, size_pop, num_pontos,  alphabet, size_tournament, prob_cros
                     else:
                         if(mut_type==2):
 
-                            offspring[j] = mutation_gaussian_xy(offspring[j][0], alphabet) #mutacao gaussiana, no caso de partiÁoes aleatorias em x e y
+                            offspring[j] = mutation_gaussian_xy(offspring[j][0], alphabet) #mutacao gaussiana, no caso de parti√ßoes aleatorias em x e y
                         else:
 
                             offspring[j] = mutation(offspring[j][0], alphabet) #mutacao normal, em x e y
@@ -160,8 +160,8 @@ def sga(numb_genera, size_pop, num_pontos,  alphabet, size_tournament, prob_cros
         print desvio/times
 
 
-    print "desvio padr„o mÈdio: %f "  %(desvio/float(times))
-    pickle.dump("desvio padr„o mÈdio: %f "  %(desvio/float(times)), file2)
+    print "desvio padr√£o m√©dio: %f "  %(desvio/float(times))
+    pickle.dump("desvio padr√£o m√©dio: %f "  %(desvio/float(times)), file2)
     print "aptidao media do melhor %d vezes: %f " %(times,the_best/times)
     pickle.dump("aptidao media do melhor %d vezes: %f " %(times,the_best/times), file2)
     print "aptidao media do worst %d vezes: %f " %(times,the_worst/times)
@@ -230,7 +230,7 @@ def create_indiv_same_spacement(alphabet, num_pontos):
 
     indiv.extend([alphabet[0],alphabet[1]]) # adiciona o ponto inicial a lista
 
-    offset = (alphabet[2]-alphabet[0])/num_pontos #calcula o espaÁo entre os x's
+    offset = (alphabet[2]-alphabet[0])/num_pontos #calcula o espa√ßo entre os x's
     i = offset + alphabet[0]
 
     while(len(indiv) != (num_pontos *2)-2): # enquanto n existirem n_pontos no array ( o -2 e pq ja la ta o inicial, e vai ter ainda o final )
@@ -284,13 +284,13 @@ def roulette_selection(population, size_tournament, total):
         new_total += inverte    #calculo o novo total para multiplicar pelo random, para ter valores nesta nova gama
 
     probab[-1]=new_total # o valor maximo vai ser igual ao do novo_total
-    probab.remove(0.0) #remove o 0, que so serviu para a primeira iteraÁao do ultimo for
+    probab.remove(0.0) #remove o 0, que so serviu para a primeira itera√ßao do ultimo for
 
    # for j in range(size_tournament): #gera o numero aleatorio que vai escolher o individuo, [size_tournament] vezes
     x = random.random() * new_total #para dar valores correctos
         #print x
     for i in range(tam): # procura o elemento correspondente
-        if( x < probab[i]): # se o valor gerado for menor do que o valor[i] da lista, entao È esse o elemento correspondente
+        if( x < probab[i]): # se o valor gerado for menor do que o valor[i] da lista, entao √© esse o elemento correspondente
             roulette.extend([population[i]])
             break
 
@@ -384,7 +384,7 @@ def mutation_gaussian_xy(indiv, alphabet):
 
 def n_point_crossover(parent_1, parent_2, n_crossover,spacement):
     if(n_crossover>0):
-        if(spacement==1): #caso em que o espaÁamento e igual, e ja tao ordenados
+        if(spacement==1): #caso em que o espa√ßamento e igual, e ja tao ordenados
             return crossover_same_spacement(parent_1,parent_2,n_crossover) #o 1 e o 2 no fitness foi apenas para debug, e indiferente pq vai ser alterado mais tarde
         else:
             return crossover_random_spacement(parent_1,parent_2,n_crossover)
@@ -479,7 +479,7 @@ def crossover_random_spacement(parent_1,parent_2,n_crossover):
                     offspring_1.insert(len(offspring_1),element_aux.pop(0))
                     offspring_1.insert(len(offspring_1),element_aux.pop(0))
                  
-                elif(offspring_1[-2]>=element_aux[0]): #caso em que nao esta ordenado, e se vai ter que procurar a posiÁao correcta em x para inserir o ponto
+                elif(offspring_1[-2]>=element_aux[0]): #caso em que nao esta ordenado, e se vai ter que procurar a posi√ßao correcta em x para inserir o ponto
                  
                     for k in range(len(offspring_1)-2,-2,-2):
                         if(element_aux[0]>offspring_1[k]):
@@ -500,7 +500,7 @@ def crossover_random_spacement(parent_1,parent_2,n_crossover):
 
                             break
                  
-            pai = (pai + 1 )%2 # muda de parent para efectuar a copia, e o processo È repetido
+            pai = (pai + 1 )%2 # muda de parent para efectuar a copia, e o processo √© repetido
             element_aux = ptr[pai][cross_point[i]*2:cross_point[(i+1)]*2] #copia os elementos respectivos para uma lista auxiliar
 
             while(len(element_aux)!=0):
