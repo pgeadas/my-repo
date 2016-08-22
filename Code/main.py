@@ -11,8 +11,8 @@ class MainWindow(wx.Frame):
 
         self.CreateStatusBar() # A StatusBar in the bottom of the window
 
-        quoteList = ['Número de Gerações:', 'Tamanho da População:', 'Número de Pontos:',  'Target:',
-         'Tamanho do Torneio/Roleta:', 'Probabilidade de Crossover (0 a 1):', 'Número de Pontos de Crossover:', 'Probabilidade de Mutação: (0 a 1)', 'Percentagem de Elites (0 a 1):', 'Modo de Selecção (1-Torneio, 2-Roleta):','1-Partiçoes iguais, 2-Partições Aleatorias', '1-Mutacao Normal, 2-Mutacao Gaussiana\n']
+        quoteList = ['NÃºmero de GeraÃ§Ãµes:', 'Tamanho da PopulaÃ§Ã£o:', 'NÃºmero de Pontos:',  'Target:',
+         'Tamanho do Torneio/Roleta:', 'Probabilidade de Crossover (0 a 1):', 'NÃºmero de Pontos de Crossover:', 'Probabilidade de MutaÃ§Ã£o: (0 a 1)', 'Percentagem de Elites (0 a 1):', 'Modo de SelecÃ§Ã£o (1-Torneio, 2-Roleta):','1-PartiÃ§oes iguais, 2-PartiÃ§Ãµes Aleatorias', '1-Mutacao Normal, 2-Mutacao Gaussiana\n']
         #defaultValues = [1000, 50, 10, [0,75,500,25] , 3, 0.5, 3, 0.1, 0.3, 1]
 
         defaultValues = [4, 10, 5, [150,75,200,25] , 3, 0.5, 1, 0.1, 0.2, 1,2,1]
@@ -118,10 +118,10 @@ class MainWindow(wx.Frame):
         try:
             num_ger = atoi(self.tFields[0].GetLineText(0))
             if(num_ger<=0):
-                self.logger.AppendText("O numero de gerações tem que ser positivo!\n")
+                self.logger.AppendText("O numero de geraÃ§Ãµes tem que ser positivo!\n")
                 return 1
         except Exception:
-            self.logger.AppendText("O numero de gerações tem que ser um inteiro!\n")
+            self.logger.AppendText("O numero de geraÃ§Ãµes tem que ser um inteiro!\n")
             return 1
 
         #parametro 5
@@ -138,16 +138,16 @@ class MainWindow(wx.Frame):
         try:
             size_pop = atoi(self.tFields[1].GetLineText(0))
             if(size_pop%2 != 0):
-                self.logger.AppendText("O tamanho da população tem que ser par!\n")
+                self.logger.AppendText("O tamanho da populaÃ§Ã£o tem que ser par!\n")
                 return 1
             elif(size_pop<=0):
-                self.logger.AppendText("O tamanho da população tem que ser positivo!\n")
+                self.logger.AppendText("O tamanho da populaÃ§Ã£o tem que ser positivo!\n")
                 return 1
             elif(size_pop<=size_tourn):
-                self.logger.AppendText("O tamanho da população tem que ser >= que o tamanho do torneio!\n")
+                self.logger.AppendText("O tamanho da populaÃ§Ã£o tem que ser >= que o tamanho do torneio!\n")
                 return 1
         except Exception:
-            self.logger.AppendText("O tamanho da população tem que ser um inteiro!\n")
+            self.logger.AppendText("O tamanho da populaÃ§Ã£o tem que ser um inteiro!\n")
             return 1
 
         #parametro 7
@@ -168,7 +168,7 @@ class MainWindow(wx.Frame):
                 return 1
 
             elif(num_pontos <= n_crossover):
-             self.logger.AppendText('Nº crossover maior que o numero de pontos!!\n')
+             self.logger.AppendText('NÂº crossover maior que o numero de pontos!!\n')
              return 1
         except Exception:
             self.logger.AppendText("O numero de pontos tem que ser um inteiro!\n")
@@ -210,7 +210,7 @@ class MainWindow(wx.Frame):
                 self.logger.AppendText("Probabilidade de Crossover!\nInsira um valor entre 0 e 1!!\n")
                 return 1
             elif(prob_muta<0 or prob_muta>1):
-                self.logger.AppendText("Probabilidade de Mutação!\nInsira um valor entre 0 e 1!!\n")
+                self.logger.AppendText("Probabilidade de MutaÃ§Ã£o!\nInsira um valor entre 0 e 1!!\n")
                 return 1
             elif(elites<0 or elites>1):
                 self.logger.AppendText("Percentagem de Elites!\nInsira um valor entre 0 e 1!!\n")
@@ -224,20 +224,20 @@ class MainWindow(wx.Frame):
         try:
             mode = atoi(self.tFields[9].GetLineText(0))
             if(mode !=1 and mode != 2):
-                self.logger.AppendText("Opções:\n1- Torneio\n2- Roleta\n")
+                self.logger.AppendText("OpÃ§Ãµes:\n1- Torneio\n2- Roleta\n")
                 return 1
         except Exception:
-            self.logger.AppendText("-Opções:\n1- Torneio\n2- Roleta\n")
+            self.logger.AppendText("-OpÃ§Ãµes:\n1- Torneio\n2- Roleta\n")
             return 1
 
         #parametro 11
         try:
             spacement = atoi(self.tFields[10].GetLineText(0))
             if(spacement !=1 and spacement != 2):
-                self.logger.AppendText("Opções:\n1-Partiçoes iguais, 2-Partições Aleatorias\n")
+                self.logger.AppendText("OpÃ§Ãµes:\n1-PartiÃ§oes iguais, 2-PartiÃ§Ãµes Aleatorias\n")
                 return 1
         except Exception:
-            self.logger.AppendText("-Opções:\n1-Partiçoes iguais, 2-Partições Aleatorias\n")
+            self.logger.AppendText("-OpÃ§Ãµes:\n1-PartiÃ§oes iguais, 2-PartiÃ§Ãµes Aleatorias\n")
             return 1
 
                 #parametro 12
@@ -286,5 +286,5 @@ class MainWindow(wx.Frame):
 
 #app = wx.App(1, 'filespec.txt') #redirects stdout to the file 'filespec'
 app = wx.App(0)
-frame = MainWindow(None, "Introdução à Inteligência Artificial - TP2 ")
+frame = MainWindow(None, "IntroduÃ§Ã£o Ã  InteligÃªncia Artificial - TP2 ")
 app.MainLoop()
