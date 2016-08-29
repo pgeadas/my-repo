@@ -38,7 +38,6 @@ def calcBrachTime(indiv, debug = False):
 		#Consistency checking. This wasn't done in a separate function for quickness
 		if(indiv[i] < x_i):
                         #print indiv[i]
-                        print "ERRO NO X"
 			return -1
                 elif(indiv[i] == x_i):
                         print x_i
@@ -46,7 +45,6 @@ def calcBrachTime(indiv, debug = False):
                         print indiv
 			return -1
 		if(indiv[i+1] >= maxHeight):
-                        print "ERRO NO Y"
 			return -1
 
 		#Calculate accelaration based on segment slope. Open question - would be using cos() faster?
