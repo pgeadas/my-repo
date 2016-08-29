@@ -18,7 +18,8 @@ import pickle
 import csv
 
 
-def sga(numb_genera, size_pop, num_pontos,  alphabet, size_tournament, prob_crossover, n_crossover, prob_mutation, size_elite, selection_mode, spacement,mut_type,times):
+def sga(numb_genera, size_pop, num_pontos,  alphabet, size_tournament, prob_crossover, n_crossover, prob_mutation, 
+size_elite, selection_mode, spacement,mut_type,times):
 
   
     total = 0.0
@@ -128,7 +129,8 @@ def sga(numb_genera, size_pop, num_pontos,  alphabet, size_tournament, prob_cros
         s=sqrt(s*(1/float((len(population)-1)))) #desvio padrao
 
         desvio += s
-        #interessa guardar os valores do best fitness e avg fitness(e tambem posso guardar do pior) separado por virgulas e guardar num ficheiro cvs
+        #interessa guardar os valores do best fitness e avg fitness(e tambem posso guardar do pior) separado por virgulas e 
+        #guardar num ficheiro cvs
         dp.extend([s])
         print s
         print desvio
@@ -327,7 +329,8 @@ def mutation(indiv, alphabet):
     #print 'new indiv '+ `indiv`
     return [indiv, 3]
 
-#nao foi criado a funcao mutation_xy pq para dar certo tinha q gerar um x entre o anterior e o proximo, e isso e quase o mesmo que fazer a gaussian
+#nao foi criado a funcao mutation_xy pq para dar certo tinha q gerar um x entre o anterior e o proximo, 
+#e isso e quase o mesmo que fazer a gaussian
 
 def mutation_gaussian(indiv, alphabet):
     #print 'INDIV........ '+ `indiv`
@@ -385,7 +388,8 @@ def mutation_gaussian_xy(indiv, alphabet):
 def n_point_crossover(parent_1, parent_2, n_crossover,spacement):
     if(n_crossover>0):
         if(spacement==1): #caso em que o espaçamento e igual, e ja tao ordenados
-            return crossover_same_spacement(parent_1,parent_2,n_crossover) #o 1 e o 2 no fitness foi apenas para debug, e indiferente pq vai ser alterado mais tarde
+            return crossover_same_spacement(parent_1,parent_2,n_crossover) #o 1 e o 2 no fitness foi apenas para debug, 
+            #e indiferente pq vai ser alterado mais tarde
         else:
             return crossover_random_spacement(parent_1,parent_2,n_crossover)
     else:
@@ -400,7 +404,8 @@ def crossover_same_spacement(parent_1,parent_2,n_crossover):
     ptr = [parent_1[0], parent_2[0]]
     bool = True
 
-    while( len(cross_point) != n_crossover):#gera os cross_points aleatorios, diferentes do ponto inicial e final, e q nao seja repetido
+    while( len(cross_point) != n_crossover):#gera os cross_points aleatorios, diferentes do ponto inicial e final, 
+    #e q nao seja repetido
         x = random.choice(range(len(parent_1[0])/2 - 1) )
         if(x not in cross_point and x!=0 and x != (len(parent_1[0])/2 - 1) and x!= 1 ):
             cross_point.extend([ x ])
@@ -445,7 +450,8 @@ def crossover_random_spacement(parent_1,parent_2,n_crossover):
     ptr = [parent_1[0], parent_2[0]]
     bool = True
 
-    while( len(cross_point) != n_crossover):#gera os cross_points aleatorios, diferentes do ponto inicial e final, e q nao seja repetido
+    while( len(cross_point) != n_crossover):#gera os cross_points aleatorios, diferentes do ponto inicial e final, 
+    #e q nao seja repetido
         x = random.choice(range(len(parent_1[0])/2 - 1) )
         if(x not in cross_point and x!=0 and x != (len(parent_1[0])/2 - 1) and x!= 1 ):
             cross_point.extend([ x ])
@@ -473,13 +479,14 @@ def crossover_random_spacement(parent_1,parent_2,n_crossover):
             element_aux = ptr[pai][cross_point[i]*2:cross_point[(i+1)]*2] #copia os elementos respectivos para uma lista auxiliar
 
             while(len(element_aux)!=0): #enquanto houver elementos
-
-                if(offspring_1[-2]<element_aux[0]): #compara o proximo elemento dessa lista auxiliar, com o ultimo que ja esta ordenado em offspring
+            #compara o proximo elemento dessa lista auxiliar, com o ultimo que ja esta ordenado em offspring
+                if(offspring_1[-2]<element_aux[0]): 
                     #caso esteja em ordem, adiciona o x e o y
                     offspring_1.insert(len(offspring_1),element_aux.pop(0))
                     offspring_1.insert(len(offspring_1),element_aux.pop(0))
                  
-                elif(offspring_1[-2]>=element_aux[0]): #caso em que nao esta ordenado, e se vai ter que procurar a posiçao correcta em x para inserir o ponto
+                elif(offspring_1[-2]>=element_aux[0]): #caso em que nao esta ordenado, e se vai ter que procurar a posiçao 
+                #correcta em x para inserir o ponto
                  
                     for k in range(len(offspring_1)-2,-2,-2):
                         if(element_aux[0]>offspring_1[k]):
